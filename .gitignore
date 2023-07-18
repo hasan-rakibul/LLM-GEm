@@ -1,5 +1,10 @@
 # api files
 *-api.txt
+
+# saved model params
+*.pth
+
+# directories
 tmp/
 WASSA23-empathy-emotion/
 
