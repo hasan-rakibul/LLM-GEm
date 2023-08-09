@@ -3,6 +3,7 @@ import scienceplots
 
 import torch
 import numpy as np
+import random
 
 def plot(x, y, y2=None, xlabel=None, ylabel=None, legend=[], save=False, filename=None):
     """Plot data points"""
@@ -30,3 +31,4 @@ def get_device(device_id=0):
 def set_all_seeds(seed):
     torch.manual_seed(seed)
     np.random.seed(seed)
+    random.seed(seed)
