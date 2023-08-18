@@ -38,12 +38,14 @@ class KFoldTrainer(Trainer):
         super(KFoldTrainer, self).__init__(task, checkpoint, lr, n_epochs, train_loader,
                  dev_loader, dev_label_crowd, dev_label_gpt, device_id, anno_diff, mode)
 
-    def fit(self): 
+    def fit(self, dev_alpha=False): 
+        '''dev_alpha: whether we want to change the dev annotation'''
+        
         for epoch in range(self.n_epochs):
             print(f'Epoch: {epoch+1}')
             self._training_step()
     
-            pearson_r, val_loss = self.evaluate(dataloader=self.dev_loader)
+            pearson_r, val_loss = self.evaluate(dataloader=self.dev_loader, dev_alpha=dev_alpha)
             
             print(f'Pearson r: {pearson_r}')  
             print('Validation loss:', val_loss.item())
@@ -57,10 +59,12 @@ class KFoldTrainer(Trainer):
             print(f'Best Pearson r: {self.best_pearson_r}\n')
         return self.best_pearson_r
 
-    def evaluate(self, dataloader):
+    def evaluate(self, dataloader, dev_alpha):
+        '''dev_alpha: whether we want to change the dev annotation'''
     
         pred = torch.empty((len(dataloader.dataset), 1), device=self.device) # len(self.dev_loader.dataset) --> # of samples
-        true_gpt = torch.empty((len(dataloader.dataset), 1), device=self.device) # len(self.dev_loader.dataset) --> # of samples
+        if dev_alpha:
+            true_gpt = torch.empty((len(dataloader.dataset), 1), device=self.device) # len(self.dev_loader.dataset) --> # of samples
         true = torch.empty((len(dataloader.dataset), 1), device=self.device) # len(self.dev_loader.dataset) --> # of samples
         self.model.eval()
     
@@ -79,15 +83,16 @@ class KFoldTrainer(Trainer):
 
                 batch_size = outputs.shape[0]
                 pred[idx:idx+batch_size, :] = outputs
-                true_gpt[idx:idx+batch_size, :] = data[self.task[0]].to(self.device, dtype=torch.float).view(-1, 1)
+                # true_gpt[idx:idx+batch_size, :] = data[self.task[0]].to(self.device, dtype=torch.float).view(-1, 1)
                 true[idx:idx+batch_size, :] = data[self.task[1]].to(self.device, dtype=torch.float).view(-1, 1)
                 idx += batch_size
-            
-            if self.mode == 0:
-                # gpt-label on the second fine tune 
-                true = self._label_fix(crowd=true, gpt=true_gpt)
-            if self.mode == 1:
-                true = true_gpt
+
+            if dev_alpha:
+                if self.mode == 0:
+                    # gpt-label on the second fine tune 
+                    true = self._label_fix(crowd=true, gpt=true_gpt)
+                if self.mode == 1:
+                    true = true_gpt
 
             true = [float(k) for k in true]
             pred = [float(k) for k in pred]

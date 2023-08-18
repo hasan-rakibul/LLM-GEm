@@ -198,9 +198,8 @@ class Trainer:
 
     def _label_fix(self, crowd, gpt):
         condition = torch.abs(crowd.detach() - gpt.detach()) > self.anno_diff
-        label = crowd.clone()
-        label[condition] = gpt[condition]
-        return label
+        crowd[condition] = gpt[condition]
+        return crowd
 
     def _training_step(self):
         tr_loss = 0.0
@@ -245,18 +244,21 @@ class Trainer:
         epoch_loss = tr_loss / len(self.train_loader)
         print(f'Train loss: {epoch_loss}')
 
-    def fit(self, save_as_loss, save_as_pearson):
-        dev_label_anno = pd.read_csv(self.dev_label_gpt, sep='\t')
-        true_gpt = dev_label_anno.loc[:, 'empathy'].tolist()
+    def fit(self, save_as_loss, save_as_pearson, dev_alpha=False):
+        '''dev_alpha: whether we want to change the dev annotation'''
+        if dev_alpha:
+            dev_label_anno = pd.read_csv(self.dev_label_gpt, sep='\t')
+            true_gpt = dev_label_anno.loc[:, 'empathy'].tolist()
+        
         dev_label_crowd = pd.read_csv(self.dev_label_crowd, sep='\t', header=None)
         true = dev_label_crowd.iloc[:, 0].tolist()
 
-        if self.mode == 0:
-            # gpt-label on the second fine tune 
-            true = self._label_fix(crowd=torch.tensor(true), gpt=torch.tensor(true_gpt))
-            true = true.tolist()
-        if self.mode == 1:
-            true = true_gpt
+        if dev_alpha:
+            if self.mode == 0:
+                true = self._label_fix(crowd=torch.tensor(true), gpt=torch.tensor(true_gpt))
+                true = true.tolist()
+            if self.mode == 1:
+                true = true_gpt
 
         for epoch in range(self.n_epochs):
             print(f'Epoch: {epoch+1}')
@@ -273,6 +275,8 @@ class Trainer:
             if (pearson_r > self.best_pearson_r):
                 self.best_pearson_r = pearson_r
             
+            print(f'Best dev set Pearson r: {self.best_pearson_r}\n')
+            
             if self.early_stopper.early_stop(val_loss, model=self.model, save_as_loss=save_as_loss):
                 break
 
@@ -281,7 +285,6 @@ class Trainer:
                 torch.save(self.model.state_dict(), save_as_pearson)
                 print("Saved the finetuned model (Pearson): ", save_as_pearson)
             
-            print(f'Best dev set Pearson r: {self.best_pearson_r}\n')
         return self.best_pearson_r
 
     def evaluate(self, dataloader, load_model=None):
