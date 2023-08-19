@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import random
+import os
 
 import torch
 import torch.nn as nn
@@ -16,8 +17,6 @@ from datasets import Dataset
 
 from sklearn.preprocessing import MinMaxScaler
 
-import os
-os.chdir("/g/data/jr19/rh2942/text-empathy/")
 from evaluation import pearsonr
 from utils.utils import plot, get_device
 

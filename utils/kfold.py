@@ -4,7 +4,6 @@ import pandas as pd
 import torch
 from torch.utils.data import DataLoader
 
-os.chdir("/g/data/jr19/rh2942/text-empathy/")
 from evaluation import pearsonr
 from utils.common import DataModule, Trainer
 
