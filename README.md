@@ -27,6 +27,9 @@
 	- raw dataset (only required if you want to pre-process from scratch) can be downloaded from the following places: NewsEmpathy v1 from [wwbp/empathic\_reactions](https://github.com/wwbp/empathic_reactions), NewsEmpathy v2 from [WASSA 2022](https://codalab.lisn.upsaclay.fr/competitions/834#learn_the_details-datasets) and NewsEmpathy v3 from [WASSA 2023](https://codalab.lisn.upsaclay.fr/competitions/11167#learn_the_details-datasets)
 	- `./intermediate-files/`: generated during intermediate processing of the data but not required in the final training/validation/testing
 - `*.tsv`: results from 10-fold cross-validation for the v1 dataset and different seed value for the v2 and v3 datasets
+- Other folders in gitignore
+	- `./ws22ckp/` and `./ws23ckp/`: to save checkpoints for the v2 and v3 datasets
+	- `./tmp/`: temporary files of test results and zip file for submission to WASSA 2022 and 2023
 
 # Glossary
 - `anno-diff`: The annotation selection threshold (alpha)

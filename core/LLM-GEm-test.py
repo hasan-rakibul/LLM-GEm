@@ -49,7 +49,6 @@ def main():
         seed=seed
     )
 
-    print('Working with', test_file)
     test_loader = data_module.dataloader(file=test_file, send_label=False, shuffle=False)
 
     trainer = Trainer(
