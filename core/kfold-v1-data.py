@@ -1,12 +1,23 @@
 import numpy as np
 import pandas as pd
+import argparse
 
 from sklearn.model_selection import KFold
 
-from core.utils import set_all_seeds
-from core.kfold import KFoldDataModule, KFoldTrainer
+from utils import set_all_seeds
+from kfold import KFoldDataModule, KFoldTrainer
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '--dev_alpha', type=bool, default=False, help='dev_alpha',
+        action=argparse.BooleanOptionalAction
+    )
+    args = parser.parse_args()
+    dev_alpha = args.dev_alpha
+    print('dev_alpha:', dev_alpha)
+    print('')
+
     checkpoint = 'roberta-base'
     task = ['empathy', 'wrong_empathy']
     feature_to_tokenise=['demographic_essay']
@@ -43,6 +54,8 @@ def main():
         )
 
         for anno_diff in anno_diff_range:
+            print('anno_diff:', anno_diff)
+            print('')
             trainer = KFoldTrainer(
                 task=task,
                 checkpoint=checkpoint,
@@ -57,15 +70,14 @@ def main():
                 mode=0 # -1: crowd, 1: gpt, 0: crowd-gpt
             )
         
-            val_pearson_r = trainer.fit(dev_alpha=True)
+            val_pearson_r = trainer.fit(dev_alpha=dev_alpha)
         
             # save as seed in index and anno_diff in columns
             print(f'\n----Pearson r: {val_pearson_r}----\n')
             kfold_results.loc[fold, anno_diff] = val_pearson_r
 
         # # Saving in each fold to be cautious
-        kfold_results.to_csv('./v1-kfold_results_anno_diff_dev_alpha_True.tsv', sep='\t')
-
+        kfold_results.to_csv('./v1-kfold_results_anno_diff.tsv', sep='\t')
 
 if __name__ == '__main__':
     main()

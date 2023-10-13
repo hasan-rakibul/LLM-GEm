@@ -2,7 +2,7 @@ import torch
 from torch.utils.data import DataLoader
 
 from evaluation import pearsonr
-from core.common import DataModule, Trainer, RobertaRegressor
+from common import DataModule, Trainer
 
 class KFoldDataModule(DataModule):
     def __init__(self, task, checkpoint, batch_size, feature_to_tokenise, seed):
@@ -36,9 +36,6 @@ class KFoldTrainer(Trainer):
 
     def fit(self, dev_alpha=False): 
         '''dev_alpha: whether we want to change the dev annotation'''
-        
-        # Initialise the model because we want to train from scratch in each fold
-        self.model = RobertaRegressor(checkpoint=self.checkpoint).to(self.device)
         
         for epoch in range(self.n_epochs):
             print(f'Epoch: {epoch+1}')

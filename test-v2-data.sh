@@ -1,7 +1,7 @@
 #!/bin/bash
 
-python3 LLM-GEm-test.py \
---anno_diff 0.0 \
+python3 ./core/LLM-GEm-test.py \
+--anno_diff 5.5 \
 --test_file ./data/PREPROCESSED-WS22-test.tsv \
 --save_id ws22
 

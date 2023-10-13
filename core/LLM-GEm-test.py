@@ -1,8 +1,8 @@
 import argparse
 import pandas as pd
 
-from core.utils import set_all_seeds
-from core.common import DataModule, Trainer
+from utils import set_all_seeds
+from common import DataModule, Trainer
 
 def main():
 
@@ -66,7 +66,6 @@ def main():
         mode=0 # doesn't matter
     )
 
-    print('Working with', load_model)
     pred = trainer.evaluate(dataloader=test_loader, load_model=load_model)
     pred_df = pd.DataFrame({'emp': pred, 'dis': pred}) # we're not predicting distress, just aligning with submission system
     pred_df.to_csv('./tmp/predictions_EMP.tsv', sep='\t', index=None, header=None)

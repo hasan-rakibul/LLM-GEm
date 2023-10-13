@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 import argparse
 
-from core.utils import set_all_seeds
-from core.common import DataModule, Trainer
+from utils import set_all_seeds
+from common import DataModule, Trainer
 
 def main():
     checkpoint = 'roberta-base'

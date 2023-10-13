@@ -18,7 +18,7 @@ from datasets import Dataset
 from sklearn.preprocessing import MinMaxScaler
 
 from evaluation import pearsonr
-from utils.utils import plot, get_device
+from utils import get_device
 
 os.environ['TOKENIZERS_PARALLELISM'] = 'false' # due to huggingface warning
 os.environ['TRANSFORMERS_NO_ADVISORY_WARNINGS'] = 'true'

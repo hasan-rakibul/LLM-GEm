@@ -1,6 +1,6 @@
 #!/bin/bash
 
-python3 LLM-GEm-test.py \
+python3 ./core/LLM-GEm-test.py \
 --anno_diff 0.0 \
 
 # zip for submission
