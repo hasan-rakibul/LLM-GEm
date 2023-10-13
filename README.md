@@ -1,9 +1,16 @@
 # LLM-GEm: Large Language Model-Guided Prediction of People's Empathy Levels towards Newspaper Article
 
 # Useful files and folders
-- `LLM-GEm.ipynb`: Select between LLM and crowdsource annotation and predict empathy levels using the RoBERTa-MLP model
+- `*.sh`: bash scripts to train and test in v2 and v3 datasets
+- `LLM-GEm-train.py`: train the model
 	- By default, the code is ready for NewsEmpathy v3 (WASSA 2023) dataset. 
-	- To execute for the NewsEmpathy v2 (WASSA 2022) dataset, we just need to provide the correct files names corresponding to the v2 dataset. To do this, values of the `dev_file`, `dev_label_crowd` and `dev_label_gpt` variables can be changed  easily done by uncommenting and commenting within the code.   
+	- To execute for the NewsEmpathy v2 (WASSA 2022) dataset, `train-v2-data.sh` includes the changed arguments.
+- `LLM-GEm-test.py`: test the model
+	- By default, the code is ready for NewsEmpathy v3 (WASSA 2023) dataset. 
+	- To execute for the NewsEmpathy v2 (WASSA 2022) dataset, `test-v2-data.sh` includes the changed arguments.
+<!-- - `LLM-GEm.ipynb`: Select between LLM and crowdsource annotation and predict empathy levels using the RoBERTa-MLP model
+	- By default, the code is ready for NewsEmpathy v3 (WASSA 2023) dataset. 
+	- To execute for the NewsEmpathy v2 (WASSA 2022) dataset, we just need to provide the correct files names corresponding to the v2 dataset. To do this, values of the `dev_file`, `dev_label_crowd` and `dev_label_gpt` variables can be changed  easily done by uncommenting and commenting within the code.    -->
 - `annotation-by-LLM.ipynb`: access LLM (GPT-3.5) to annotate the essays
 	- requires `openai-api.txt` file, consisting of the api
 - `data-preprocessing.ipynb`: all preprocessing, including using LLM to convert numerical demographic to text, rephrase texts, etc.

@@ -3,8 +3,8 @@ import pandas as pd
 
 from sklearn.model_selection import KFold
 
-from utils.utils import set_all_seeds
-from utils.kfold import KFoldDataModule, KFoldTrainer
+from core.utils import set_all_seeds
+from core.kfold import KFoldDataModule, KFoldTrainer
 
 def main():
     checkpoint = 'roberta-base'
