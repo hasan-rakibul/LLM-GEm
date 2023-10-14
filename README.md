@@ -9,12 +9,9 @@
 	- `LLM-GEm-train.py`: train the model
 		- By default, the code is ready for NewsEmpathy v3 (WASSA 2023) dataset. 
 		- To execute for the NewsEmpathy v2 (WASSA 2022) dataset, `train-v2-data.sh` includes the changed arguments.
-	- `LLM-GEm-test.py`: test the model
+	- `LLM-GEm-test.py`: test the model. It select between LLM and crowdsource annotation and predict empathy levels using the RoBERTa-MLP model
 		- By default, the code is ready for NewsEmpathy v3 (WASSA 2023) dataset. 
 		- To execute for the NewsEmpathy v2 (WASSA 2022) dataset, `test-v2-data.sh` includes the changed arguments.
-	<!-- - `LLM-GEm.ipynb`: Select between LLM and crowdsource annotation and predict empathy levels using the RoBERTa-MLP model
-		- By default, the code is ready for NewsEmpathy v3 (WASSA 2023) dataset. 
-		- To execute for the NewsEmpathy v2 (WASSA 2022) dataset, we just need to provide the correct files names corresponding to the v2 dataset. To do this, values of the `dev_file`, `dev_label_crowd` and `dev_label_gpt` variables can be changed  easily done by uncommenting and commenting within the code.    -->
 	- `evaluation.py`: official evaluation file from WASSA workshop, consisting of pearson r calculation
 	- `kfold.py` and `kfold-v1-data.py`: 10-fold cross-validation-based empathy level prediction on the NewsEmpathy v1 dataset
 - `annotation-by-LLM.ipynb`: access LLM (GPT-3.5) to annotate the essays
@@ -30,6 +27,12 @@
 - Other folders in gitignore
 	- `./ws22ckp/` and `./ws23ckp/`: to save checkpoints for the v2 and v3 datasets
 	- `./tmp/`: temporary files of test results and zip file for submission to WASSA 2022 and 2023
+
+# License
+- The [v1 dataset](https://github.com/wwbp/empathic_reactions) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- The terms and conditions of [v2 dataset](https://codalab.lisn.upsaclay.fr/competitions/834#learn_the_details-datasets) and [v3 dataset](https://codalab.lisn.upsaclay.fr/competitions/11167#learn_the_details-datasets) includes the following statement: "The dataset should only be used for scientific or research purposes. Any other use is explicitly prohibited."
+- Our processed datasets are released under the above same licenses and conditions of the original datasets
+- Our codes are released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license
 
 # Glossary
 - `anno-diff`: The annotation selection threshold (alpha)
