@@ -28,6 +28,15 @@
 	- `./ws22ckp/` and `./ws23ckp/`: to save checkpoints for the v2 and v3 datasets
 	- `./tmp/`: temporary files of test results and zip file for submission to WASSA 2022 and 2023
 
+# Software and Hardware
+- Python 3.11.0
+	- datasets==2.13.0
+	- pandas==2.0.2
+	- scikit-learn==1.2.2
+	- torch==2.0.1
+	- transformers==4.31.0
+- 1 NVIDIA Tesla V100 32GB GPU
+
 # License
 - The [v1 dataset](https://github.com/wwbp/empathic_reactions) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 - The terms and conditions of [v2 dataset](https://codalab.lisn.upsaclay.fr/competitions/834#learn_the_details-datasets) and [v3 dataset](https://codalab.lisn.upsaclay.fr/competitions/11167#learn_the_details-datasets) includes the following statement: "The dataset should only be used for scientific or research purposes. Any other use is explicitly prohibited."
