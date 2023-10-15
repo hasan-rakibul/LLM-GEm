@@ -29,12 +29,7 @@
 	- `./tmp/`: temporary files of test results and zip file for submission to WASSA 2022 and 2023
 
 # Software and Hardware
-- Python 3.11.0
-	- datasets==2.13.0
-	- pandas==2.0.2
-	- scikit-learn==1.2.2
-	- torch==2.0.1
-	- transformers==4.31.0
+- Python 3.11.0 (see `requirements.txt` and `requirements_torch.txt` for packages)
 - 1 NVIDIA Tesla V100 32GB GPU
 
 # License
