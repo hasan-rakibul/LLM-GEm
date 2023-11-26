@@ -1,5 +1,7 @@
 *.db
 draft.ipynb
+predictions_EMP.tsv
+/Vasava-2022-Transformer-modified/test_result.md
 
 # api files
 *-api.txt
@@ -14,6 +16,7 @@ OTHERS/
 archived/
 ws22ckp/
 ws23ckp/
+runs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
