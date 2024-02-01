@@ -1,4 +1,16 @@
 # LLM-GEm: Large Language Model-Guided Prediction of People's Empathy Levels towards Newspaper Article
+This repository contains the implementation of our above paper accepted at the EACL 2024 conference.
+
+# Overview
+![Overall System](overall-system.jpg)<br>
+Fig: A typical empathy prediction workflow by directly utilising a PLM versus our proposed LLM-guided workflow. Because of the noise in crowdsourced data, a typical workflow often results in suboptimal prediction. Our proposed workflow employs LLM to refine or re define noisy annotations automatically and outperforms the typical approach.
+
+&nbsp;
+&nbsp;
+
+![LLM-GEm](architecture.jpg)<br>
+Fig: _LLM-GEm_ system: we first use LLM to convert demographic data to meaningful text. Essays and demographic sentences are used to annotate the essays using LLM, and reliable annotations are then selected for each sample. After rephrasing the texts using LLM, we train a RoBERTA-MLP model to predict empathy levels.
+
 
 # Useful files and folders
 - `*.sh`: bash scripts to train and test in all three datasets. **These are the primary scripts to train and test the proposed model.**
@@ -45,3 +57,16 @@
 - `anno-diff`: The annotation selection threshold (alpha)
 - `dev_alpha`: False (default) means not to change validation annotation; True means change validation annotation using the threshold
 - `mode`: 0 for LLM-GEm, 1 for LLM only and -1 for crowdsource annotation only
+
+# If you find this repository useful, please cite our paper
+```bibtex
+@inproceedings{hasan2024llm-gem,
+    title = {{LLM-GEm}: Large Language Model-Guided Prediction of People's Empathy Levels towards Newspaper Article},
+    author = {Hasan, Md Rakibul and Hossain, Md Zakir and Gedeon, Tom and Rahman, Shafin},
+    booktitle = {Findings of the Association for Computational Linguistics: EACL 2024},
+    month = {3},
+    year = {2024},
+    address = {St. Julians, Malta},
+    publisher = {Association for Computational Linguistics}
+}
+```
