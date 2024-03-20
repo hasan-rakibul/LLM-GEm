@@ -3,6 +3,11 @@ draft.ipynb
 predictions_EMP.tsv
 /Vasava-2022-Transformer-modified/test_result.md
 
+data/intermediate-files/
+data/not_final_but_important/
+data/WASSA22/
+data/WASSA23/
+
 # api files
 *-api.txt
 

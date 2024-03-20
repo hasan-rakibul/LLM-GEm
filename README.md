@@ -37,14 +37,14 @@ Fig: _LLM-GEm_ system: we first use the LLM to convert demographic data to meani
 	- requires `openai-api.txt` file, consisting of the api
 - `roberta-basic.ipynb`: RoBERTa without any MLP to predict empathy levels without any demographic numbers. Used in ablation study.
 - `analysis-and-plots.ipynb`: analysis on LLM annotation consistency and producing other plots
-- `./data/`: processed datasets
-	- raw dataset (only required if you want to pre-process from scratch) can be downloaded from the following places: NewsEmpathy v1 from [wwbp/empathic\_reactions](https://github.com/wwbp/empathic_reactions), NewsEmpathy v2 from [WASSA 2022](https://codalab.lisn.upsaclay.fr/competitions/834#learn_the_details-datasets) and NewsEmpathy v3 from [WASSA 2023](https://codalab.lisn.upsaclay.fr/competitions/11167#learn_the_details-datasets)
-	- `./intermediate-files/`: generated during intermediate processing of the data but not required in the final training/validation/testing
+- `./data/`: processed datasets are available
+	- raw dataset (including dev and test set) can be downloaded from the following places: NewsEmpathy v1 from [wwbp/empathic\_reactions](https://github.com/wwbp/empathic_reactions), NewsEmpathy v2 from [WASSA 2022](https://codalab.lisn.upsaclay.fr/competitions/834#learn_the_details-datasets) and NewsEmpathy v3 from [WASSA 2023](https://codalab.lisn.upsaclay.fr/competitions/11167#learn_the_details-datasets)
+	<!-- - `./intermediate-files/`: generated during intermediate processing of the data but not required in the final training/validation/testing -->
 	- **WS2\* and v1\* are the final preprocessed datasets (with GPT annotations) to be used in training**
 - `*.tsv`: results from 10-fold cross-validation for the v1 dataset and different seed value for the v2 and v3 datasets
-- Other folders in gitignore
+<!-- - Other folders in gitignore
 	- `./ws22ckp/` and `./ws23ckp/`: to save checkpoints for the v2 and v3 datasets
-	- `./tmp/`: temporary files of test results and zip file for submission to WASSA 2022 and 2023
+	- `./tmp/`: temporary files of test results and zip file for submission to WASSA 2022 and 2023 -->
 - `Vasava-2022-Transformer-modified/`: Codes here are taken from [https://github.com/notprameghuikey0913/WASSA-2022-Empathy-detection-and-Emotion-Classification](https://github.com/notprameghuikey0913/WASSA-2022-Empathy-detection-and-Emotion-Classification) and modified to test the performance of their model on our improved WASSA-2022 dataset.
 
 
@@ -66,12 +66,15 @@ Fig: _LLM-GEm_ system: we first use the LLM to convert demographic data to meani
 # If you find this repository useful, please cite our paper
 ```bibtex
 @inproceedings{hasan2024llm-gem,
-    title = {{LLM-GEm}: Large Language Model-Guided Prediction of People's Empathy Levels towards Newspaper Article},
+    title = {{LLM}-{GE}m: Large Language Model-Guided Prediction of People's Empathy Levels towards Newspaper Article},
     author = {Hasan, Md Rakibul and Hossain, Md Zakir and Gedeon, Tom and Rahman, Shafin},
+    editor = {Graham, Yvette and Purver, Matthew},
     booktitle = {Findings of the Association for Computational Linguistics: EACL 2024},
     month = {3},
     year = {2024},
-    address = {St. Julians, Malta},
-    publisher = {Association for Computational Linguistics}
+    pages = {2215--2231},
+    address = {St. Julian{'}s, Malta},
+    publisher = {Association for Computational Linguistics},
+    url = {https://aclanthology.org/2024.findings-eacl.147}
 }
 ```
