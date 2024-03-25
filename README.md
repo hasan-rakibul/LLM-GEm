@@ -18,6 +18,7 @@ Fig: _LLM-GEm_ system: we first use the LLM to convert demographic data to meani
 
 
 # Useful files and folders
+- Pre-trained model weights are available at [Google Drive](https://drive.google.com/drive/folders/1gA-gvfpkzChb2qIH2HVfO5T8weunf9_5?usp=sharing). Download and save them in the root directory. Specifically, `./ws22ckp/` and `./ws23ckp/` should store the checkpoints for the v2 and v3 datasets, respectively.
 - `*.sh`: bash scripts to train and test in all three datasets. **These are the primary scripts to train and test the proposed model.**
 	- `train-test-v1-data.sh` are for the NewsEmpathy v1 dataset
 	- `train-v2-data.sh` and `test-v2-data.sh` are for the NewsEmpathy v2 (WASSA 2022) dataset
@@ -43,7 +44,6 @@ Fig: _LLM-GEm_ system: we first use the LLM to convert demographic data to meani
 	- **WS2\* and v1\* are the final preprocessed datasets (with GPT annotations) to be used in training**
 - `*.tsv`: results from 10-fold cross-validation for the v1 dataset and different seed value for the v2 and v3 datasets
 <!-- - Other folders in gitignore
-	- `./ws22ckp/` and `./ws23ckp/`: to save checkpoints for the v2 and v3 datasets
 	- `./tmp/`: temporary files of test results and zip file for submission to WASSA 2022 and 2023 -->
 - `Vasava-2022-Transformer-modified/`: Codes here are taken from [https://github.com/notprameghuikey0913/WASSA-2022-Empathy-detection-and-Emotion-Classification](https://github.com/notprameghuikey0913/WASSA-2022-Empathy-detection-and-Emotion-Classification) and modified to test the performance of their model on our improved WASSA-2022 dataset.
 
