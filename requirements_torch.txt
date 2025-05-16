@@ -1,2 +1,2 @@
 --index-url https://download.pytorch.org/whl/cu118
-torch==2.6.0+cu118
+torch==2.6.0+cu118 # originally used 2.0.1+cu118, but bumped here following recommendation due to PyTorch security issues
