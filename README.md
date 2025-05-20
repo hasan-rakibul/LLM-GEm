@@ -1,5 +1,5 @@
 # LLM-GEm: Large Language Model-Guided Prediction of People's Empathy Levels towards Newspaper Article
-This repository contains the implementation of our above paper accepted at the EACL 2024 conference.
+This repository contains the implementation of our above paper accepted at the EACL 2024 conference. [updated]
 
 Paper link: [PDF](https://hasan-rakibul.github.io/pdfs/hasan2024LLM-GEm.pdf)
 
