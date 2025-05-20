@@ -1,7 +1,7 @@
 # LLM-GEm: Large Language Model-Guided Prediction of People's Empathy Levels towards Newspaper Article
-This repository contains the implementation of our above paper accepted at the EACL 2024 conference. [updated]
+This repository contains the implementation of our above paper accepted at the EACL 2024 conference.
 
-Paper link: [PDF](https://hasan-rakibul.github.io/pdfs/hasan2024LLM-GEm.pdf)
+Paper link: [ACL Anthology](https://aclanthology.org/2024.findings-eacl.147) [PDF](https://hasan-rakibul.github.io/pdfs/hasan2024LLM-GEm.pdf) [Presentation (requires login](https://underline.io/lecture/95401-llm-gem-large-language-model-guided-prediction-of-people-s-empathy-levels-towards-newspaper-article)
 
 # Abstract
 Empathy – encompassing the understanding and supporting others' emotions and perspectives – strengthens various social interactions, including written communication in healthcare, education and journalism. Detecting empathy using AI models by relying on self-assessed ground truth through crowdsourcing is challenging due to the inherent noise in such annotations. To this end, we propose a novel system, named Large Language Model-Guided Empathy _(LLM-GEm)_ prediction system. It rectifies annotation errors based on our defined annotation selection threshold and makes the annotations reliable for conventional empathy prediction models, e.g., BERT-based pre-trained language models (PLMs). Previously, demographic information was often integrated numerically into empathy detection models. In contrast, our _LLM-GEm_ leverages GPT-3.5 LLM to convert numerical data into semantically meaningful textual sequences, enabling seamless integration into PLMs. We experiment with three _NewsEmpathy_ datasets involving people's empathy levels towards newspaper articles and achieve state-of-the-art test performance using a RoBERTa-based PLM.
